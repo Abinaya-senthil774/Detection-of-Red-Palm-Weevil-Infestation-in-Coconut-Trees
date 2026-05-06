@@ -1,3 +1,25 @@
+"""
+DESCRIPTION:
+This script performs event-based audio segmentation on a dataset of '.wav' files. 
+It analyzes the audio to find active segments where the Root Mean Square (RMS) energy 
+exceeds a predefined threshold (`RMS_THRESHOLD`). If an active segment lasts longer 
+than the `MIN_SEGMENT_DURATION`, it is extracted and saved as a new individual '.wav' file.
+The script processes files recursively within 'clean' and 'infested' subdirectories, 
+preserving the original class labels by saving the extracted segments into corresponding 
+output folders.
+
+INPUTS:
+- A directory specified by `input_root` containing subfolders 'clean' and 'infested' 
+  with the original '.wav' files.
+- Audio parameters defined at the top of the script (e.g., threshold, frame length).
+
+OUTPUTS:
+- Individual segmented '.wav' files saved into the directory specified by `output_root`, 
+  maintaining 'clean' and 'infested' subfolders.
+- Extracted segments are named systematically combining the original relative folder path, 
+  original filename, and a segment index.
+"""
+
 import os
 import librosa
 import soundfile as sf
