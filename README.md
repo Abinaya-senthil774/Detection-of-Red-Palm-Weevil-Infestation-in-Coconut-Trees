@@ -110,7 +110,7 @@ Loads the CSV, applies SMOTE for dataset balancing, scales the features, and tra
 python train_model.py
 ```
 **Step 5:** Visualization & Analysis (visualize_audio.py)
-Generates Waveforms, Logarithmic Spectrograms, and CWT Scalograms to visually differentiate healthy vs. infested signals[cite: 1].
+Generates Waveforms, Logarithmic Spectrograms, and CWT Scalograms to visually differentiate healthy vs. infested signals.
 
 ```Bash
 python visualize_audio.py
@@ -118,6 +118,7 @@ python visualize_audio.py
 
 ## Citation
 If you utilize this repository or methodology in your research, please cite the associated paper:
+
 Paper published in IEEE Delcon https://ieeexplore.ieee.org/document/11400515
 
 Abinaya S, Dr. Diviya M, Hemanth E B,Dr. Ashwini K. "Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees". (2025).
