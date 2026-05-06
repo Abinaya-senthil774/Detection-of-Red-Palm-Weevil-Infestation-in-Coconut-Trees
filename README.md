@@ -87,3 +87,8 @@ Generates Waveforms, Logarithmic Spectrograms, and CWT Scalograms to visually di
 ```Bash
 python visualize_audio.py
 ```
+
+## Citation
+If you utilize this repository or methodology in your research, please cite the associated paper:
+
+Abinaya S, Diviya M, Hemanth E B, Ashwini K. "Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees". (2025).
