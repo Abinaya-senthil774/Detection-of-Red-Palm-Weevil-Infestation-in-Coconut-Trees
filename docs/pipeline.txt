@@ -1,0 +1,153 @@
+Step 2: Visualize and Check Signal Stationarity
+✔️ How to tell if the signal is non-stationary?
+We check:
+
+Waveform: Changes in amplitude patterns.
+
+Spectrogram: If frequency content changes over time → it’s non-stationary.
+
+✔️ CWT (Continuous Wavelet Transform) is suitable for non-stationary signals because:
+
+It captures both time and frequency with variable resolution.
+
+Ideal for short, impulsive vibrations (like insect activity).
+
+✔️ Expected Output:
+
+Time-frequency heatmaps.
+
+You’ll clearly see burst-like activity in infested signals, and smoother patterns in clean ones.
+
+Step 3: Denoising Using SVD
+✔️ Is SVD the same as bandpass filtering?
+No.
+
+SVD (Singular Value Decomposition) separates the signal into low-rank components to remove noise based on energy contribution.
+
+Bandpass Filtering removes frequencies outside a defined range (e.g., only keeping 1–8 kHz) to isolate useful signals.
+
+✔️ Both can be used together:
+
+Bandpass filter → rough noise rejection.
+
+SVD → fine-tuned noise suppression.
+
+✔️ Visualization Output:
+
+Plot waveforms or spectrograms before and after SVD to show how background noise is reduced.
+
+Step 4: Normalization
+✔️ Why normalize?
+
+Ensures all audio signals are on the same scale (important for ML).
+
+✔️ How to normalize?
+
+Peak normalization: scale waveform between -1 and 1.
+
+Standard normalization: zero-mean, unit-variance for features.
+
+✔️ Visualization:
+
+Compare histograms or waveforms pre/post normalization.
+
+Step 5: Segmentation
+✔️ We’ll use event-based segmentation, ideal for impulsive insect activity.
+
+Based on energy bursts or threshold crossings.
+
+✔️ Synchronization:
+Since you're using acoustic sensors only, no need for synchronization unless:
+
+You use other modalities (e.g., thermal sensors or timestamp logs).
+
+Step 6: Feature Extraction
+✔️ Physical vs Perceptual Features:
+
+Use both — they complement each other.
+
+Physical: energy, spectral features
+
+Perceptual: MFCCs, Gammatone, etc.
+
+✔️ MFCC + Spectral Contrast is a strong combo:
+
+MFCC: Represents human-like perception
+
+Spectral contrast: Captures timbral variation (burst vs smooth tones)
+
+✔️ Should it match filtering output?
+Yes — for example:
+
+If your bandpass filter is 1–8 kHz, use MFCCs from that range only.
+
+Match wavelet parameters to burst durations seen in segmentation.
+
+✔️ Feature Selection:
+
+RFE (Recursive Feature Elimination): Iteratively removes least important features based on a model.
+
+PCA (Principal Component Analysis): Reduces dimensionality while retaining variance.
+
+t-SNE: For visualizing high-dimensional features in 2D/3D — not used for training.
+
+✔️ Visualization:
+
+Scatter plots of PCA or t-SNE output (ideally clean vs infested clusters should separate).
+
+Step 7: Dataset Balancing
+✔️ You have:
+
+31 infested vs 1734 clean — extremely imbalanced.
+
+✔️ Techniques:
+
+Oversampling: Use SMOTE or data augmentation (add noise, pitch shift).
+
+Undersampling: Reduce clean samples randomly (risky if too much info lost).
+
+Class-weighted loss: Tell your model to “care more” about infested class.
+
+Step 8: Model Selection
+✔️ CNN (Convolutional Neural Network):
+
+Best with spectrograms/images.
+
+Captures local patterns (bursts, frequency bands).
+
+✔️ RNN (Recurrent Neural Network):
+
+Great for sequence modeling — e.g., if you use raw audio frames or MFCC sequences.
+
+LSTM/GRU are popular RNN variants.
+
+✔️ AST (Audio Spectrogram Transformer):
+
+State-of-the-art, transformer-based model.
+
+Very effective, but resource-heavy and needs lots of data.
+
+✔️ Recommendation:
+
+Start with CNN → scalable and robust.
+
+Use AST if you want to experiment later and have enough compute.
+
+Step 9: Model Evaluation
+✔️ Use:
+
+Classification Report: Accuracy, Precision, Recall, F1.
+
+Confusion Matrix: See false positives/negatives clearly.
+
+ROC-AUC: For imbalanced classes — better insight than accuracy.
+
+Step 10: Testing & Output
+✔️ After training:
+
+Save model (.h5, .pkl, etc.).
+
+Predict on the 692 test files.
+
+Output predictions (file name + prediction) to .csv.
+

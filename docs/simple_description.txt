@@ -1,0 +1,40 @@
+Description:
+To find the presence of insects that cannot be captured with a camera or vision, an additional method is required to detect the presence of insects in coconut trees. So, a sound module is introduced with the camera module. A transmitter is placed at one end of the tree (either the bottom or the top), while a receiver is positioned at the opposite end. A continuous light signal is transmitted from the transmitter to the receiver. If sound or vibrations caused by the Red Palm Weevil are detected, the light path gets disrupted. This system can be extended by wrapping the cable around multiple trees. To reduce the sensor false alarm rate, in addition, we present an approach for integrating the classification results generated when using the temporal and spectral data. 
+
+Step 1: Dataset loading
+The dataset consists of 731 infested sound files and 1734 non-infested sound files in .wav format. Additionally, 692 test case files were provided in the dataset. 
+
+Visualization:
+The dataset is loaded and visualized for insights. Audio duration and amplitude distributions were analyzed to find the variability in audio and amplitude between classes to understand the learning pattern of the model. The amplitude data gives insights into the loudness and quietness of the recordings, which is relevant for distinguishing infested and non-infested trees. Histograms and box plots are plotted to visualize the distribution of values.
+
+Waveform and spectrogram are plotted to visualize actual audio data and its frequency content. The waveform shows the raw signal of the audio capturing variations in amplitude over time. The patterns provide insights into oscillations, regular or sharp, or no oscillations differentiate infested and non-infested classes.
+Spectrogram graphs display the frequencies of audio signals that change over time to analyze the frequency content of the sound. 
+
+Step 2: Feature extraction
+
+MFCC(Mel-Frequency Cepstral Coefficients) - 
+Audio signals are preprocessed in the frequency domain, MFCCs filter out the noise and capture the important aspects in the audio. The most widely used tool is utilized in speech and music analysis, the power spectrum of an audio signal mimics human hearing. MFCCs are extracted from the audio and averaged across time to create fixed-size feature vector.
+
+Spectral contrast - 
+Spectral contrast measures the difference in amplitude peaks and valleys in the sound's spectrum. The capability to capture different sound textures makes it crucial for identifying infested audio that has a specific range of noise or disturbances in the frequency domain.
+
+Combining features: 
+We concatenate both MFCC and spectral contrast features, which creates a set of features that represent both the frequency domain and tonal characteristics of the audio. Combining different types of features improves the model's ability to distinguish classes with more information.
+
+
+Step 3:
+The data is split into training and testing set with an 80:20 ratio. Features are scaled and normalized. A neural network is built using TensorFlow Keras, with two fully connected layers with ReLU activation, a Dropout layer to prevent overfitting, and a sigmoid output layer for binary classification. The model is trained for 30 epochs with a binary cross-entropy loss function. The output produced :
+accuracy: 0.9494 - loss: 0.1285 - val_accuracy: 0.9331 - val_loss: 0.1447
+          precision    recall  f1-score   support
+
+       Clean       0.94      0.96      0.95       347
+    Infested       0.90      0.84      0.87       146
+
+    accuracy                           0.92       493
+   macro avg       0.92      0.90      0.91       493
+weighted avg       0.92      0.92      0.92       493
+
+The model was further tested with other models like Random Forest, SVM, and Logistic Regression, which gave an accuracy of 0.9067, 0.9229, and 0.8580, respectively. 
+
+
+
