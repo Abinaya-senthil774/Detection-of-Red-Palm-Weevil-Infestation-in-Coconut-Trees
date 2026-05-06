@@ -39,29 +39,29 @@ coconut-weevil-acoustic-detection/
 *   **Class Balancing:** Implements SMOTE (Synthetic Minority Over-sampling Technique) to handle class imbalance in the acoustic dataset.
 
 ## ⭐ Dataset
-The project utilizes the **Tree Vibes** dataset[cite: 1].
-* **Total Records:** 5,153 audio samples[cite: 1].
-* **Classes:** 731 infested sound files and 1,734 non-infested (clean) sound files[cite: 1].
-* **Testing Data:** 692 test case files were provided in the dataset[cite: 1].
+The project utilizes the **Tree Vibes** dataset.
+* **Total Records:** 5,153 audio samples.
+* **Classes:** 731 infested sound files and 1,734 non-infested (clean) sound files.
+* **Testing Data:** 692 test case files were provided in the dataset.
 * **Source:** [Tree Vibes Dataset on Kaggle](https://www.kaggle.com/datasets/potamitis/treevibes/data).
 
 ## ⭐ Model Architecture
 The core classification model is a Feedforward Neural Network (FFNN) built in PyTorch, structured as follows:
-1. **Input Layer:** Takes the 20-dimensional feature vector (13 MFCCs + 7 Spectral Contrast bands)[cite: 1].
-2. **Hidden Layer 1:** 512 neurons with ReLU activation[cite: 1].
-3. **Hidden Layer 2:** 256 neurons with ReLU activation[cite: 1].
-4. **Hidden Layer 3:** 128 neurons with ReLU activation[cite: 1].
-5. **Output Layer:** 1 neuron with Sigmoid activation for binary classification (Probability > 0.5 indicates infestation)[cite: 1].
+1. **Input Layer:** Takes the 20-dimensional feature vector (13 MFCCs + 7 Spectral Contrast bands).
+2. **Hidden Layer 1:** 512 neurons with ReLU activation.
+3. **Hidden Layer 2:** 256 neurons with ReLU activation.
+4. **Hidden Layer 3:** 128 neurons with ReLU activation.
+5. **Output Layer:** 1 neuron with Sigmoid activation for binary classification (Probability > 0.5 indicates infestation).
 
 ## ⭐ Performance & Results
-The proposed neural network model achieved strong overall classification performance, outperforming other tested ensemble methods like XGBoost and CatBoost[cite: 1].
-* **Testing Accuracy:** 85.06%[cite: 1]
-* **Training Accuracy:** 94.04%[cite: 1]
-* **Precision (Infested):** 0.69[cite: 1]
-* **Recall (Infested):** 0.80[cite: 1]
-* **F1-Score (Infested):** 0.74[cite: 1]
+The proposed neural network model achieved strong overall classification performance, outperforming other tested ensemble methods like XGBoost and CatBoost.
+* **Testing Accuracy:** 85.06%
+* **Training Accuracy:** 94.04%
+* **Precision (Infested):** 0.69
+* **Recall (Infested):** 0.80
+* **F1-Score (Infested):** 0.74
 
-The high recall value (0.80) is particularly significant for pest detection applications, ensuring that actual infestations are rarely missed (minimizing false negatives)[cite: 1].
+The high recall value (0.80) is particularly significant for pest detection applications, ensuring that actual infestations are rarely missed (minimizing false negatives).
 
 ---
 
@@ -118,5 +118,5 @@ python visualize_audio.py
 
 ## Citation
 If you utilize this repository or methodology in your research, please cite the associated paper:
-
-Abinaya S, Diviya M, Hemanth E B, Ashwini K. "Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees". (2025).
+Paper published in IEEE Delcon [https://ieeexplore.ieee.org/document/11400515] (https://ieeexplore.ieee.org/document/11400515)
+Abinaya S, Dr. Diviya M, Hemanth E B,Dr. Ashwini K. "Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees". (2025).
