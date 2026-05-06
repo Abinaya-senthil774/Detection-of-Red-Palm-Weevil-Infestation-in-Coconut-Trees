@@ -119,6 +119,6 @@ python visualize_audio.py
 ## Citation
 If you utilize this repository or methodology in your research, please cite the associated paper:
 
-Paper published in IEEE Delcon https://ieeexplore.ieee.org/document/11400515
-
-Abinaya S, Dr. Diviya M, Hemanth E B,Dr. Ashwini K. "Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees". (2025).
+[![Read on IEEE](https://img.shields.io/badge/IEEE-Read%20Paper-blue)](https://ieeexplore.ieee.org/document/11400515)
+**Neural Network-Based Acoustic Detection of Red Palm Weevil Infestation in Coconut Trees**, 2025  
+*Authors:* Dr. Ashwini K, Dr.Diviya M, Abinaya S, Hemanth E B.
