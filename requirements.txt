@@ -1,0 +1,28 @@
+# Audio Processing & Wavelets
+librosa
+soundfile
+PyWavelets
+scipy
+
+# Data Manipulation & Scientific Computing
+numpy
+pandas
+
+# Data Visualization
+matplotlib
+seaborn
+
+# Machine Learning & Preprocessing
+scikit-learn
+imbalanced-learn
+
+# Gradient Boosting Frameworks
+xgboost
+lightgbm
+catboost
+
+# Deep Learning
+torch
+
+# Utilities
+tqdm
