@@ -15,7 +15,7 @@ The project utilizes the **Tree Vibes** dataset[cite: 1].
 * **Total Records:** 5,153 audio samples[cite: 1].
 * **Classes:** 731 infested sound files and 1,734 non-infested (clean) sound files[cite: 1].
 * **Testing Data:** 692 test case files were provided in the dataset[cite: 1].
-* **Source:** [Tree Vibes Dataset on Kaggle](https://www.kaggle.com/datasets/potamitis/treevibes/data)[cite: 1].
+* **Source:** [Tree Vibes Dataset on Kaggle](https://www.kaggle.com/datasets/potamitis/treevibes/data).
 
 ## 🧠 Model Architecture
 The core classification model is a Feedforward Neural Network (FFNN) built in PyTorch, structured as follows:
@@ -47,3 +47,43 @@ The high recall value (0.80) is particularly significant for pest detection appl
 ```bash
 git clone https://github.com/yourusername/coconut-weevil-acoustic-detection.git
 cd coconut-weevil-acoustic-detection
+```
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+### 3. Usage Guide 
+
+This project is modularized into several sequential scripts. Update the CONFIG paths in each script to match your local directories before running.
+
+**Step 1:** Denoise Audio (denoise_audio.py)
+Applies Discrete Wavelet Transform (DWT) to remove low-energy noise while preserving acoustic larval features.
+
+```Bash
+python denoise_audio.py
+```
+**Step 2:** Audio Segmentation (segment_audio.py)
+Segments sound files based on energy levels by calculating RMS energy over short frames.
+
+```Bash
+python segment_audio.py
+```
+**Step 3:** Feature Extraction (extract_features.py)
+Extracts 13 MFCC and 7 Spectral Contrast features from the segmented audio and saves them to features_mfcc_contrast.csv.
+
+```Bash
+python extract_features.py
+```
+
+**Step 4:** Model Training (train_model.py)
+Loads the CSV, applies SMOTE for dataset balancing, scales the features, and trains the PyTorch FFNN. Saves model_full.pth and model_weights.pth.
+
+```Bash
+python train_model.py
+```
+**Step 5:** Visualization & Analysis (visualize_audio.py)
+Generates Waveforms, Logarithmic Spectrograms, and CWT Scalograms to visually differentiate healthy vs. infested signals[cite: 1].
+
+```Bash
+python visualize_audio.py
+```
