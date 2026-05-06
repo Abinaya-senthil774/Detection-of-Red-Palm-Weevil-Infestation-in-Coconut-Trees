@@ -4,6 +4,34 @@ The red palm weevil (*Rhynchophorus ferrugineus*) is an invasive pest that cause
 
 By analyzing Mel-Frequency Cepstral Coefficients (MFCC) and spectral contrast features from audio recordings, our Feedforward Neural Network (FFNN) achieves an 85% testing accuracy, offering a scalable, low-cost solution for precision agriculture and early pest intervention.
 
+## ⭐ Project Structure
+```text
+coconut-weevil-acoustic-detection/
+│
+├── assets/
+│   ├── results/           # Contains output metrics, evaluation reports, and CSVs
+│   └── visualization/     # Contains generated plots (waveforms, spectrograms, CWTs)
+│
+├── datasets/              # Directory for raw, cleaned, and segmented audio data
+│
+├── docs/                  # Project documentation, reference papers, and LaTeX files
+│
+├── models/                # Saved PyTorch models (.pth files) and weights
+│
+├── src/                   # Source code directory
+│   ├── __init__.py           # Makes the src directory a Python module
+│   ├── denoising.py          # Script for Wavelet-based audio denoising
+│   ├── feature_extraction.py # Script to extract 13 MFCC and 7 Spectral Contrast features
+│   ├── NN_testing.py         # Script to evaluate the trained FFNN on test data
+│   ├── NN_training.py        # Script to train the PyTorch Feedforward Neural Network
+│   ├── Normalizing.py        # Script for peak amplitude normalization of audio files
+│   ├── Segmentation.py       # Script for event-based audio segmentation using RMS energy
+│   ├── Training.py           # Script for training comparative baseline/ensemble ML models
+│   └── Visualization.py      # Script for generating audio visual representations
+│
+├── README.md              # Project overview and usage instructions
+└── requirements.txt       # Python dependencies required to run the project
+```
 ## ⭐ Key Fearures
 *   **Non-Invasive Detection:** Uses audio signals to detect pests inside the tree trunk without causing harm to the tree.
 *   **Advanced Preprocessing:** Utilizes Continuous Wavelet Transform (CWT), Singular Value Decomposition (SVD), and bandpass filtering to denoise and segment audio effectively.
